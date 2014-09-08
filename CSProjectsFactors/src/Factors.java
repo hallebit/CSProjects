@@ -6,6 +6,8 @@ public class Factors {
 	public static Scanner console = new Scanner(System.in);
 	
 	/**
+	 * main!
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
