@@ -27,7 +27,7 @@ public class Factors {
 					error = true;
 				}
 			}
-			if(num <= 0 || num >= 100) {
+			if(num <= 0 || num > 100) {
 				if(quit || error) {} else {
 					System.out.println("Input not within a valid range");
 				}
