@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -13,10 +14,18 @@ public class Factors {
 	public static void main(String[] args) {
 		boolean quit = false;
 		boolean error = false;
+		boolean hasNextInt = false;
+		int gdc1 = 0;
+		int gdc2 = 0;
 		int num = 0;
 		while(!quit) {
 			System.out.println("Pick a number between 1 and 100:");
-			String input = console.next();
+			while(console.hasNextInt()) {
+				hasNextInt = true;
+			}
+			if(!hasNextInt) {
+				String input = console.next();
+			}
 			try {
 				num = Integer.parseInt(input);
 			} catch (NumberFormatException e) {
@@ -57,22 +66,24 @@ public class Factors {
 	
 	public static void getGDC(int num1, int num2) {
 		System.out.println("Finding the Greatest Common Denominator for " + num1 + " and " + num2);
-		String gdc = "";
+		int gdc = 1;
 		if(num1 < num2) {
-			for(int i = num1; i >= 1; i--) {
+			for(int i = 1; i <= num1 ; i++) {
 				if(num2 % i == 0 && num1 % i == 0) {
-					gdc = i + "";
+					gdc = i;
 				}
 			}
 		}else if(num1 > num2) {
-			for(int i = num2; i >= 1; i--) {
+			for(int i = 1; i <= num2; i++) {
 				if(num2 % i == 0 && num1 % i == 0) {
-					gdc = i + "";
+					gdc = i;
 				}
 			}		
 		}else {
-			gdc = num1 + "";
+			gdc = num1;
 		}
+		System.out.println(gdc);
 	}
-
+	
+	
 }
