@@ -14,18 +14,17 @@ public class Factors {
 	public static void main(String[] args) {
 		boolean quit = false;
 		boolean error = false;
-		boolean hasNextInt = false;
-		int gdc1 = 0;
-		int gdc2 = 0;
+		int hasNextInt = 0;
+		ArrayList<Integer> gdc = new ArrayList<Integer>();
 		int num = 0;
 		while(!quit) {
 			System.out.println("Pick a number between 1 and 100:");
 			while(console.hasNextInt()) {
-				hasNextInt = true;
+				hasNextInt++;
+				gdc.add(console.nextInt());
 			}
-			if(!hasNextInt) {
+			if(hasNextInt == 0) {
 				String input = console.next();
-			}
 			try {
 				num = Integer.parseInt(input);
 			} catch (NumberFormatException e) {
@@ -43,7 +42,10 @@ public class Factors {
 			} else {
 				getFactors(num);
 			}
+			}else
 			error = false;
+			gdc.clear();
+			hasNextInt = 0;
 			num = 0;
 		} 
 		System.out.print("Thanks for Playing");
@@ -64,8 +66,13 @@ public class Factors {
 		System.out.println();
 	}
 	
-	public static void getGDC(int num1, int num2) {
-		System.out.println("Finding the Greatest Common Denominator for " + num1 + " and " + num2);
+	//TODO: add more than two number capability. 
+	public static void getGDC(ArrayList<Integer> gdc) {
+		System.out.println("Finding the Greatest Common Denominator...");
+		for(int i = 0; i < gdc.size(); i++) {
+		
+		}
+		/*System.out.println("Finding the Greatest Common Denominator for " + num1 + " and " + num2);
 		int gdc = 1;
 		if(num1 < num2) {
 			for(int i = 1; i <= num1 ; i++) {
@@ -82,8 +89,10 @@ public class Factors {
 		}else {
 			gdc = num1;
 		}
-		System.out.println(gdc);
+		System.out.println(gdc); */
+		
 	}
 	
-	
+	//TODO: Create find smallest number method which accepts ArrrayLists
+
 }
