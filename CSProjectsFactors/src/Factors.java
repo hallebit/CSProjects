@@ -12,7 +12,7 @@ public class Factors {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		boolean quit = false;
+		/*boolean quit = false;
 		boolean error = false;
 		int hasNextInt = 0;
 		ArrayList<Integer> gdc = new ArrayList<Integer>();
@@ -48,7 +48,17 @@ public class Factors {
 			hasNextInt = 0;
 			num = 0;
 		} 
-		System.out.print("Thanks for Playing");
+		System.out.print("Thanks for Playing"); */
+		
+		ArrayList<Integer> nums = new ArrayList<Integer>();
+		nums.add(12);
+		nums.add(24);
+		nums.add(6);
+		nums.add(4);
+		
+		System.out.println(getSmallest(nums));
+
+		getGDC(nums);
 	}
 	
 	/**
@@ -66,33 +76,30 @@ public class Factors {
 		System.out.println();
 	}
 	
-	//TODO: add more than two number capability. 
 	public static void getGDC(ArrayList<Integer> gdc) {
 		System.out.println("Finding the Greatest Common Denominator...");
-		for(int i = 0; i < gdc.size(); i++) {
-		
-		}
-		/*System.out.println("Finding the Greatest Common Denominator for " + num1 + " and " + num2);
-		int gdc = 1;
-		if(num1 < num2) {
-			for(int i = 1; i <= num1 ; i++) {
-				if(num2 % i == 0 && num1 % i == 0) {
-					gdc = i;
+		int GDC = 1;
+		for(int i = 1; i <= getSmallest(gdc); i++) {
+			boolean isGDC = true;
+			for(int num = 0; num < gdc.size(); num++) {
+				if(gdc.get(num) % i != 0) {
+					isGDC = false;
 				}
 			}
-		}else if(num1 > num2) {
-			for(int i = 1; i <= num2; i++) {
-				if(num2 % i == 0 && num1 % i == 0) {
-					gdc = i;
-				}
-			}		
-		}else {
-			gdc = num1;
+			if(isGDC) {
+				GDC = i;
+			}
 		}
-		System.out.println(gdc); */
-		
+		System.out.print("Greatest Common Denominator is " + GDC);		
 	}
 	
-	//TODO: Create find smallest number method which accepts ArrrayLists
-
+	public static int getSmallest(ArrayList<Integer> list) {
+		int smallest = list.get(0);
+		for(int i = 1; i < list.size(); i++) {
+			if(list.get(i) < smallest) {
+				smallest = list.get(i);
+			}
+		}
+		return smallest;
+	}
 }
