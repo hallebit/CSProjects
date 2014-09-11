@@ -12,6 +12,11 @@ public class Factors {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		String action = getFacsOrGdcOrQuit();
+		System.out.println(action);
+		
+		
+		
 		/*boolean quit = false;
 		boolean error = false;
 		int hasNextInt = 0;
@@ -49,16 +54,6 @@ public class Factors {
 			num = 0;
 		} 
 		System.out.print("Thanks for Playing"); */
-		
-		ArrayList<Integer> nums = new ArrayList<Integer>();
-		nums.add(12);
-		nums.add(24);
-		nums.add(6);
-		nums.add(4);
-		
-		System.out.println(getSmallest(nums));
-
-		getGDC(nums);
 	}
 	
 	/**
@@ -66,18 +61,16 @@ public class Factors {
 	 */
 	public static void getFactors(int num) {
 		System.out.println("Finding factors of the number " + num + "...");
-		String fac = "";
 		for(int i = num; i > 0; i--) {
 			if(num % i == 0) {
 				System.out.print(i + " ");
-				fac += i + "";
 			}
 		}
 		System.out.println();
 	}
 	
 	public static void getGDC(ArrayList<Integer> gdc) {
-		System.out.println("Finding the Greatest Common Denominator...");
+		System.out.println("Finding the Greatest Common Denominator of " + gdc.toString());
 		int GDC = 1;
 		for(int i = 1; i <= getSmallest(gdc); i++) {
 			boolean isGDC = true;
@@ -91,6 +84,32 @@ public class Factors {
 			}
 		}
 		System.out.print("Greatest Common Denominator is " + GDC);		
+	}
+	
+	//TODO: functionality
+	public static String getFacsOrGdcOrQuit() {
+		System.out.println("Input one number between 1 and 100 to get all of its factors.");
+		System.out.println("Input multiple numbers to get the Greatest Common Denominator.");
+		System.out.println("Input 'quit' to quit the program.");
+		String input = "";
+		int i = 0;
+		if(console.hasNextInt()) {
+			while(console.hasNextInt()) {
+				i++;
+				input += i + " " + console.nextInt();
+			}
+			return input;
+		} else if(console.hasNext()) {
+			return "q" + console.next();
+		} else
+			return "Error input invalid";
+		
+	}
+	
+	//TODO: functionality
+	public static String getInput() {
+
+		return console.next();
 	}
 	
 	public static int getSmallest(ArrayList<Integer> list) {
