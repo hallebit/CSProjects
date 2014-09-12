@@ -5,17 +5,11 @@ import java.util.Scanner;
 public class Factors {
 
 	public static Scanner console = new Scanner(System.in);
-	
-	/**
-	 * main!
-	 * 
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		getNumsOrQuit();
 	}
 	
-	//TODO: functionality
 	public static void getNumsOrQuit() {
 		System.out.println("Input one number between 1 and 100 to get all of its factors.");
 		System.out.println("Input multiple numbers to get the Greatest Common Denominator.");
@@ -66,9 +60,6 @@ public class Factors {
 		return toReturn;
 	}
 		
-	/**
-	 * @param num
-	 */
 	public static void getFactors(int num) {
 		if(num <= 100 && num >= 1) {
 			System.out.println("Finding factors of the number " + num + "...");
