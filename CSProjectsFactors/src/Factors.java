@@ -26,9 +26,7 @@ public class Factors {
 			if(console.next().equalsIgnoreCase("quit")) {
 				System.out.println("Thanks for playing");
 			} else {
-				System.out.println("Error input invalid, try again.");
-				System.out.println();
-				getNumsOrQuit();
+				errorRestart();
 			}
 		}	
 	}
@@ -43,18 +41,14 @@ public class Factors {
 					toReturn.add(Integer.parseInt(toSearch.substring(0, toSearch.indexOf(" "))));
 					toSearch = toSearch.substring(toSearch.indexOf(" ") + 1);
 				} catch(NumberFormatException e) {
-					System.out.println("Error input invalid, try once more.");
-					System.out.println();
-					getNumsOrQuit();
+					errorRestart();
 				}
 			}
 		} else {
 			try {
 				toReturn.add(Integer.parseInt(toFind));
 			} catch(NumberFormatException e) {
-				System.out.println("Error input invalid, please input data again");
-				System.out.println();
-				getNumsOrQuit();
+				errorRestart();
 			}
 		}
 		return toReturn;
@@ -70,38 +64,29 @@ public class Factors {
 			}
 			System.out.println();
 		} else {
-			System.out.println("Input is not within a valid range, please try again");
-			System.out.println();
-			getNumsOrQuit();
+			errorRestart();
 		}
 		
 	}
 	
 	public static void getGDC(ArrayList<Integer> gdc) {
-		System.out.println("Finding the Greatest Common Denominator of " + gdc.toString() + "...");
-		int GDC = 1;
-		boolean withinRange = true;
-		for(int i = 1; i <= getSmallest(gdc); i++) {
-			boolean isGDC = true;
-			for(int num = 0; num < gdc.size(); num++) {
-				if(gdc.get(num) <= 100 && gdc.get(num) >= 1) {
+		if(withinRange(gdc)) {	
+			System.out.println("Finding the Greatest Common Denominator of " + gdc.toString() + "...");
+			int GDC = 1;
+			for(int i = 1; i <= getSmallest(gdc); i++) {
+				boolean isGDC = true;
+				for(int num = 0; num < gdc.size(); num++) {
 					if(gdc.get(num) % i != 0) {
 						isGDC = false;
 					}
-				} else {
-					withinRange = false;
+				}
+				if(isGDC) {
+					GDC = i;
 				}
 			}
-			if(isGDC) {
-				GDC = i;
-			}
-		}
-		if(withinRange) {
 			System.out.println("Greatest Common Denominator is " + GDC);		
 		} else {
-			System.out.println("Input is not within a valid range, please try again");
-			System.out.println();
-			getNumsOrQuit();
+			errorRestart();
 		}
 	}
 	
@@ -113,6 +98,22 @@ public class Factors {
 			}
 		}
 		return smallest;
+	}
+	
+	public static boolean withinRange(ArrayList<Integer> toCheck) {
+		boolean withinRange = true;
+		for(int i = 0; i < toCheck.size(); i++) {
+			if(toCheck.get(i) > 100 || toCheck.get(i) < 1) {
+				withinRange = false;
+			}
+		}
+		return withinRange;
+	}
+	
+	public static void errorRestart() {
+		System.out.println("ERROR input invalid, please try again");
+		System.out.println();
+		getNumsOrQuit();
 	}
 	
 }
