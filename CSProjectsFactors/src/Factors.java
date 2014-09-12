@@ -54,11 +54,13 @@ public class Factors {
 		return toReturn;
 	}
 		
-	public static void getFactors(int num) {
+	public static ArrayList<Integer> getFactors(int num) {
+		ArrayList<Integer> values = new ArrayList<Integer>();
 		if(num <= 100 && num >= 1) {
 			System.out.println("Finding factors of the number " + num + "...");
 			for(int i = num; i > 0; i--) {
 				if(num % i == 0) {
+					values.add(i);
 					System.out.print(i + " ");
 				}
 			}
@@ -66,13 +68,13 @@ public class Factors {
 		} else {
 			errorRestart();
 		}
-		
+		return values;
 	}
 	
-	public static void getGDC(ArrayList<Integer> gdc) {
+	public static int getGDC(ArrayList<Integer> gdc) {
+		int GDC = 1;
 		if(withinRange(gdc)) {	
 			System.out.println("Finding the Greatest Common Denominator of " + gdc.toString() + "...");
-			int GDC = 1;
 			for(int i = 1; i <= getSmallest(gdc); i++) {
 				boolean isGDC = true;
 				for(int num = 0; num < gdc.size(); num++) {
@@ -88,6 +90,7 @@ public class Factors {
 		} else {
 			errorRestart();
 		}
+		return GDC;
 	}
 	
 	public static int getSmallest(ArrayList<Integer> list) {
